@@ -1,6 +1,6 @@
 #include <ESP32Servo.h>
 #include "BluetoothSerial.h" 
-Servo middle, left, right, claw ;  // creates 4 "servo objects"
+Servo middle, left, right, claw ;  
  
 char  DATA;
 #if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
@@ -53,7 +53,7 @@ void setup()
   claw.setPeriodHertz(50); 
     DATA = ' ';
   SerialBT.begin("CLAW32");
-  //calibration();
+  calibration();
  pinMode(leftfront, OUTPUT);
   pinMode(RightFront, OUTPUT);
     pinMode(leftback, OUTPUT);
@@ -64,11 +64,11 @@ void setup()
 } 
  
  void calibration(){
-  middle.write(90); // sets the servo position according to the value(degrees)
-  left.write(90); // does the same
-  right.write(90); // and again
-  claw.write(25); // yes you've guessed it
-  delay(300); // doesn't constantly update the servos which can fry them
+  middle.write(90); 
+  left.write(90); 
+  right.write(90); 
+  claw.write(25); 
+  delay(300); 
  }
  void RobotControl(){
          if (SerialBT.available()) {
